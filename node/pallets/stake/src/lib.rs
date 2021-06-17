@@ -4,7 +4,7 @@
 
 use codec::{Decode, Encode};
 use dispatch::DispatchResult;
-use frame_support::traits::{OnUnbalanced, Vec};
+use frame_support::traits::{OnUnbalanced};
 use frame_support::{
     decl_error, decl_event, decl_module, decl_storage, dispatch, ensure,
     traits::{Currency, ExistenceRequirement, LockIdentifier, LockableCurrency, WithdrawReasons},

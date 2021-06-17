@@ -1,5 +1,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
+#![cfg_attr(not(feature = "std"), no_std)]
+
 use automata_primitives::{AccountId, Balance, Block, BlockNumber, Hash, Index};
 use automata_runtime::apis::FulfillmentApi as FulfillmentRuntimeApi;
 use fc_rpc_core::types::PendingTransactions;

@@ -478,42 +478,42 @@ pub fn new_light(config: Configuration) -> Result<TaskManager, ServiceError> {
     new_light_base(config).map(|(task_manager, _, _, _, _, _)| task_manager)
 }
 
-#[cfg(test)]
-mod tests {
-    use crate::service::{new_full_base, new_light_base, NewFullBase};
+// #[cfg(test)]
+// mod tests {
+//     use crate::service::{new_full_base, new_light_base, NewFullBase};
 
-    // It is "ignored", but the node-cli ignored tests are running on the CI.
-    // This can be run locally with `cargo test --release -p node-cli test_sync -- --ignored`.
-    #[test]
-    #[ignore]
-    fn test_consensus() {
-        sc_service_test::consensus(
-            crate::chain_spec::tests::integration_test_config_with_two_authorities(),
-            |config| {
-                let NewFullBase {
-                    task_manager,
-                    client,
-                    network,
-                    transaction_pool,
-                    ..
-                } = new_full_base(config)?;
-                Ok(sc_service_test::TestNetComponents::new(
-                    task_manager,
-                    client,
-                    network,
-                    transaction_pool,
-                ))
-            },
-            |config| {
-                let (keep_alive, _, _, client, network, transaction_pool) = new_light_base(config)?;
-                Ok(sc_service_test::TestNetComponents::new(
-                    keep_alive,
-                    client,
-                    network,
-                    transaction_pool,
-                ))
-            },
-            vec!["//Alice".into(), "//Bob".into()],
-        )
-    }
-}
+//     // It is "ignored", but the node-cli ignored tests are running on the CI.
+//     // This can be run locally with `cargo test --release -p node-cli test_sync -- --ignored`.
+//     #[test]
+//     #[ignore]
+//     fn test_consensus() {
+//         sc_service_test::consensus(
+//             crate::chain_spec::tests::integration_test_config_with_two_authorities(),
+//             |config| {
+//                 let NewFullBase {
+//                     task_manager,
+//                     client,
+//                     network,
+//                     transaction_pool,
+//                     ..
+//                 } = new_full_base(config)?;
+//                 Ok(sc_service_test::TestNetComponents::new(
+//                     task_manager,
+//                     client,
+//                     network,
+//                     transaction_pool,
+//                 ))
+//             },
+//             |config| {
+//                 let (keep_alive, _, _, client, network, transaction_pool) = new_light_base(config)?;
+//                 Ok(sc_service_test::TestNetComponents::new(
+//                     keep_alive,
+//                     client,
+//                     network,
+//                     transaction_pool,
+//                 ))
+//             },
+//             vec!["//Alice".into(), "//Bob".into()],
+//         )
+//     }
+// }
